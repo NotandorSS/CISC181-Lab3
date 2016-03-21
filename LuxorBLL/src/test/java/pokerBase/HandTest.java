@@ -348,6 +348,30 @@ public class HandTest {
 	}
 	
 	@Test
+	public void TestNRF() {
+		HandScore hs = new HandScore();
+		ArrayList<Card> NRF = new ArrayList<Card>();
+		NRF.add(new Card(eSuit.CLUBS,eRank.TEN,0));
+		NRF.add(new Card(eSuit.CLUBS,eRank.JACK,0));
+		NRF.add(new Card(eSuit.CLUBS,eRank.QUEEN,0));		
+		NRF.add(new Card(eSuit.CLUBS,eRank.KING,0));
+		NRF.add(new Card(eSuit.CLUBS,eRank.ACE,0));
+		Collections.sort(NRF);
+		Hand h = new Hand();
+		h = SetHand(NRF,h);
+		
+		boolean bActualIsHandNRF = Hand.isH, hs);
+		boolean bExpectedIsHandNRF = true;
+		
+		assertEquals(bActualIsHandStraight,bExpectedIsHandStraight);		
+		assertEquals(hs.getHiHand(),eRank.FIVE.getiRankNbr());		
+	}
+	
+	
+	
+	
+	
+	@Test
 	public void TestStraightEval2() {
 		
 		HandScore hs = new HandScore();

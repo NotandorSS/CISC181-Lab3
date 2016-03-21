@@ -28,6 +28,16 @@ public class Hand {
 		BestCardsInHand = new ArrayList<Card>();
 	}
 
+	public static Hand PickBestHand(ArrayList<Hand> Hands) throws HandException{
+		Hand highest = Hands.get(0);
+		for (int i = 1; i < Hands.size(); i++){
+			if (Hands.get(i).getHandScore().getHandStrength() > highest.getHandScore().getHandStrength()){
+				highest = Hands.get(i);
+			}
+		}
+		return highest;
+	}
+
 	public ArrayList<Card> getCardsInHand() {
 		return CardsInHand;
 	}
@@ -77,7 +87,7 @@ public class Hand {
 	 * @return
 	 * @throws HandException
 	 */
-	public static Hand EvaluateHand(Hand h) throws HandException {
+	public static Hand EvaluateHand(Hand h) throws HandException { 
 
 		Collections.sort(h.getCardsInHand());
 
@@ -143,6 +153,24 @@ public class Hand {
 		return bIsFlush;
 	}
 
+	private static boolean isHandNRFlush(ArrayList<Card> cards) {
+		int cnt = 0;
+		boolean bIsFlush = false;
+		for (eSuit Suit : eSuit.values()) {
+			cnt = 0;
+			for (Card c : cards) {
+				if (c.geteSuit() == Suit) {
+					cnt++;
+				}
+			}
+			if (cnt == 5)
+				if (cards.get(0).geteRank() == eRank.TEN && cards.get(0).geteRank() == eRank.TEN && cards.get(0).geteRank() == eRank.TEN && cards.get(0).geteRank() == eRank.TEN && cards.get(0).geteRank() == eRank.TEN)
+
+		}
+		return bIsFlush;
+	}
+
+	
 	private static boolean isStraight(ArrayList<Card> cards, Card highCard) {
 		boolean bIsStraight = false;
 		boolean bAce = false;
